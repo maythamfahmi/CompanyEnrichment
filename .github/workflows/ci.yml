@@ -3,7 +3,7 @@ name: Build, test and publish container
 on:
   pull_request:
   push:
-    branches: [main, master]
+    branches: [main]
     tags: ['v*']
   workflow_dispatch:
 
