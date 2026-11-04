@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CompanyEnrichment.Api/CompanyEnrichment.Api.csproj" />
+    <Project Path="src/CompanyEnrichment.Shared/CompanyEnrichment.Shared.csproj" />
+    <Project Path="src/Cvr.Client/Cvr.Client.csproj" />
+    <Project Path="src/StatBank.Client/StatBank.Client.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CompanyEnrichment.IntegrationTests/CompanyEnrichment.IntegrationTests.csproj" />
+    <Project Path="tests/CompanyEnrichment.Tests/CompanyEnrichment.Tests.csproj" />
+    <Project Path="tests/CompanyEnrichment.TestSupport/CompanyEnrichment.TestSupport.csproj" />
+    <Project Path="tests/CvrClient.Tests/CvrClient.Tests.csproj" />
+    <Project Path="tests/StatBankClient.Tests/StatBankClient.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,16 @@
+﻿@cvrapi_HostAddress = http://localhost:5195
+
+GET {{cvrapi_HostAddress}}/api/companies/16500836/enrichment?year=2024
+Accept: application/json
+
+###
+
+GET {{cvrapi_HostAddress}}/health/live
+Accept: application/json
+
+###
+
+GET {{cvrapi_HostAddress}}/health/ready
+Accept: application/json
+
+###

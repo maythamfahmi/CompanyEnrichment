@@ -1,0 +1,116 @@
+{
+  "info": {
+    "_postman_id": "dce7c0cd-7d28-47c8-87a3-516657753572",
+    "name": "cvr + statbank",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59436443",
+    "_collection_link": "https://go.postman.co/collection/59436443-dce7c0cd-7d28-47c8-87a3-516657753572?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get by CVR",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});\n\nconst data = pm.response.json();\n\npm.collectionVariables.set(\n    \"industryCode\",\n    String(data.industrycode)\n);\n\nconsole.log(\"Industry code:\", data.industrycode);\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://apicvr.dk/api/v1/:cvrNumber",
+          "protocol": "https",
+          "host": [
+            "apicvr",
+            "dk"
+          ],
+          "path": [
+            "api",
+            "v1",
+            ":cvrNumber"
+          ],
+          "variable": [
+            {
+              "key": "cvrNumber",
+              "value": "16500836"
+            }
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Get by Name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://apicvr.dk/api/v1/search/company/:companyName",
+          "protocol": "https",
+          "host": [
+            "apicvr",
+            "dk"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "search",
+            "company",
+            ":companyName"
+          ],
+          "variable": [
+            {
+              "key": "companyName",
+              "value": "LB FORSIKRING"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Stat Info",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n    \"table\": \"ERHV1\", \r\n    \"format\": \"CSV\", \r\n    \"variables\": [ \r\n        {\r\n            \"code\": \"BRANCHE07\", \r\n            \"values\": [\"{{industryCode}}\"] \r\n        }, \r\n        { \r\n            \"code\": \"TAL\", \r\n            \"values\": [ \r\n            \"ARBSTED\", \r\n            \"ANSATTE\", \r\n            \"FULDBESK\", \r\n            \"LØNSUM\" \r\n            ] \r\n        }, \r\n        { \r\n            \"code\": \"TID\",\r\n            \"values\": [\"*\"] \r\n         } \r\n    ] \r\n} ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.statbank.dk/v1/data",
+          "protocol": "https",
+          "host": [
+            "api",
+            "statbank",
+            "dk"
+          ],
+          "path": [
+            "v1",
+            "data"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "industryCode",
+      "value": ""
+    }
+  ]
+}
